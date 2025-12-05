@@ -131,6 +131,7 @@ animated_raindrops <- combined %>%
   shadow_mark() +
   theme_minimal(base_size = 14)
 
+animated_raindrops
 ```
 
 ![](rainfall_animation.gif)

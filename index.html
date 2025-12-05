@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="is-wales-wetter-than-england" class="level1">
-<h1>Is Wales wetter than England?</h1>
+<h1>Is Wales wetter than England? 💧</h1>
 <section id="data-origin" class="level2">
 <h2 class="anchored" data-anchor-id="data-origin">Data Origin</h2>
 <p>The rainfall data used in this project was sourced from the <a href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series">Met Office website</a> which provides long-term climate records for each UK region. The data set used is the Year Ordered Statistics, which contains monthly and annual rainfall values derived from weather station observations across the UK.</p>
@@ -167,6 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6 166.4 244.0 356.1 965.0</code></pre>
 </div>
 </div>
+<p>We can see an annual column is included in both data sets. This is the best column to use for this research question.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check for any missing values in annual column</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(Wales_data<span class="sc">$</span>ann))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -193,12 +194,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1 2025</code></pre>
 </div>
 </div>
+<p>From running this analysis, the current data shows information missing from the year 2025. This may vary depending on when this analysis is ran. To accommodate for this, filter the data by removing missing data in annual instead of removing the specific year data is missing from.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#clean the data by removing missing items (will vary each year) and include country column</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>clean_rainfall <span class="ot">&lt;-</span> <span class="cf">function</span>(data, country) {</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, ann) <span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ann)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ann)) <span class="sc">%&gt;%</span> <span class="co">#removing missing data in annual</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Country =</span> country) <span class="co">#including country column here</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -254,7 +256,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shadow_mark</span>() <span class="sc">+</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>animated_raindrops</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p><img src="rainfall_animation.gif" class="img-fluid"></p>
 <p>This graph provides clear evidence in relation to the research question ‘Is Wales wetter than England?’. Across the entire period shown, Wales consistently records far higher annual rainfall than England, with no years in which England approaches Welsh rainfall levels. The clear separation between the two clusters of points show that Wales is reliably and substantially wetter than England.</p>
