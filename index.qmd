@@ -111,7 +111,7 @@ ggplot(avg_rain, aes(x = Country, y = MeanRainfall, fill = Country)) +
   theme_minimal(base_size = 10) 
 ```
 
-This graph shows that Wales receives substantially more rainfall than England overall. England's mean rainfall is under 900mm, while Wales exceeds 1400mm. The clear difference indicates that Wales is noticeable wetter on average.
+This graph shows that Wales receives substantially more rainfall than England overall. England's mean rainfall is under 900mm, while Wales exceeds 1400mm. The clear difference indicates that Wales is noticeable wetter on average. However, this does not show rainfall for each year in the data, only an average, so a scatter plot is required for the final visualisation.
 
 ## Final Visualisation
 
@@ -130,8 +130,6 @@ animated_raindrops <- combined %>%
   transition_time(year) +
   shadow_mark() +
   theme_minimal(base_size = 14)
-
-animated_raindrops
 ```
 
 ![](rainfall_animation.gif)

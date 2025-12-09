@@ -14,8 +14,12 @@ This project has several elements including:
 - Animated visualisation using ggplot2, dyplyr and gganimate
 - Reproducible workflow using Quarto for transparent reporting
 
-# Requirements
+# Repository Structure
+- index.qmd The main Quarto document containing code and narrative
+- index.html The rendered output file (viewable in browser)
 
+# Requirements
+To reproduce this analysis you will need the following installed: 
 - R (version 4.5.1)
-- R packages: tidyverse, ggplot2, dplyr, gganimate, gifski #required to render GIFS
+- R packages: tidyverse, ggplot2, dplyr, gganimate
 - Quarto
