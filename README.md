@@ -16,7 +16,8 @@ This project has several elements including:
 
 # Repository Structure
 - index.qmd The main Quarto document containing code and narrative
-- index.html The rendered output file (viewable in browser)
+- index.html
+- Plots The first bar chart and final visualisation scatter plot for this project
 
 # Requirements
 To reproduce this analysis you will need the following installed: 
