@@ -58,7 +58,9 @@ We can see an annual column is included in both data sets. This is the best colu
 #check for any missing values in annual column
 sum(is.na(Wales_data$ann))
 sum(is.na(England_data$ann))
+```
 
+```{r}
 #check which year annual data is missing from
 Wales_data %>% 
   filter(is.na(ann)) %>% 
